@@ -1,7 +1,7 @@
 #ifndef CLSINPUTKEYBOARD_H
 #define CLSINPUTKEYBOARD_H
 
-
+//http://stackoverflow.com/questions/3063110/get-the-current-operating-system-during-runtime-in-c
 #ifdef WIN32
 #define WINVER 0x0500
 #include "windows.h"
