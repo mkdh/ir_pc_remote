@@ -2,15 +2,21 @@
 
 clsInputKeyboard::clsInputKeyboard()
 {
+#ifdef WIN32
+
     // Create a generic keyboard event structure
     ip.type = INPUT_KEYBOARD;
     ip.ki.wScan = 0;
     ip.ki.time = 0;
     ip.ki.dwExtraInfo = 0;
+#endif
+
 }
 
 void clsInputKeyboard::input_single_command(QString str_key)
 {
+#ifdef WIN32
+
     if(str_key == "Up")
     {
         // Press the "Ctrl" key
@@ -40,7 +46,7 @@ void clsInputKeyboard::input_single_command(QString str_key)
     {
 
     }
-
+#endif
 }
 
 //void clsInputKeyboard::test()

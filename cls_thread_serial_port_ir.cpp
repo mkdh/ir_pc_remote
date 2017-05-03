@@ -16,7 +16,7 @@ clsThreadSerialPortIR::~clsThreadSerialPortIR()
 #endif
 }
 
-bool clsThreadSerialPortIR::open_serial_port()
+bool clsThreadSerialPortIR::slot_open_serial_port()
 {
     serial.setPortName("COM5");
     serial.setBaudRate(QSerialPort::Baud9600);
@@ -36,18 +36,29 @@ bool clsThreadSerialPortIR::open_serial_port()
         //this->start();
         //http://stackoverflow.com/questions/26612852/how-does-readyread-work-in-qt
         connect(&serial, SIGNAL(readyRead()), SLOT(handleReadyRead()));
+        slot_send_to_qml("serial.isOpen(): true");
         return true;
     }
     else
     {
+        slot_send_to_qml("serial.isOpen(): false");
+
         return false;
     }
 }
 
 void clsThreadSerialPortIR::handleReadyRead()
 {
-    qDebug() __func__ << serial.readAll();
-    slot_send_to_qml(serial);
+    QByteArray qba_message;
+    qba_message = serial.readAll();
+    qDebug() << __func__ << qba_message;
+
+    slot_send_to_qml(qba_message);
+    //simulator keyboard
+    if(qba_message == "Up")
+    {
+        input_keyboard->input_single_command("Up");
+    }
 }
 
 void clsThreadSerialPortIR::slot_send_to_qml(QString msg)
