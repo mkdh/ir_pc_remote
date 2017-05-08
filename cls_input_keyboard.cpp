@@ -32,20 +32,96 @@ void clsInputKeyboard::input_single_command(QString str_key)
     }
     else if(str_key == "Down")
     {
+        // Press
+        ip.ki.wVk = VK_DOWN;
+        ip.ki.dwFlags = 0; // 0 for key press
+        SendInput(1, &ip, sizeof(INPUT));
 
+
+        // Release
+        ip.ki.wVk = VK_DOWN;
+        ip.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &ip, sizeof(INPUT));
     }
     else if(str_key == "Left")
     {
+        // Press
+        ip.ki.wVk = VK_LEFT;
+        ip.ki.dwFlags = 0; // 0 for key press
+        SendInput(1, &ip, sizeof(INPUT));
 
+
+        // Release
+        ip.ki.wVk = VK_LEFT;
+        ip.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &ip, sizeof(INPUT));
     }
     else if(str_key == "Right")
     {
+        // Press
+        ip.ki.wVk = VK_RIGHT;
+        ip.ki.dwFlags = 0; // 0 for key press
+        SendInput(1, &ip, sizeof(INPUT));
 
+
+        // Release
+        ip.ki.wVk = VK_RIGHT;
+        ip.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &ip, sizeof(INPUT));
     }
     else if(str_key == "Enter")
     {
+        // Press
+        ip.ki.wVk = VK_RETURN;
+        ip.ki.dwFlags = 0; // 0 for key press
+        SendInput(1, &ip, sizeof(INPUT));
 
+
+        // Release
+        ip.ki.wVk = VK_RETURN;
+        ip.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &ip, sizeof(INPUT));
     }
+    else if(str_key == "Space")
+    {
+        // Press
+        ip.ki.wVk = VK_SPACE;
+        ip.ki.dwFlags = 0; // 0 for key press
+        SendInput(1, &ip, sizeof(INPUT));
+
+
+        // Release
+        ip.ki.wVk = VK_SPACE;
+        ip.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &ip, sizeof(INPUT));
+    }
+    else if(str_key == "PgUp")
+    {//http://www.setnode.com/blog/mapvirtualkey-getkeynametext-and-a-story-of-how-to/
+        // Press
+        ip.ki.wVk = VK_PRIOR;
+        ip.ki.dwFlags = 0; // 0 for key press
+        SendInput(1, &ip, sizeof(INPUT));
+
+
+        // Release
+        ip.ki.wVk = VK_PRIOR;
+        ip.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &ip, sizeof(INPUT));
+    }
+    else if(str_key == "PgDn")
+    {
+        // Press
+        ip.ki.wVk = VK_NEXT;
+        ip.ki.dwFlags = 0; // 0 for key press
+        SendInput(1, &ip, sizeof(INPUT));
+
+
+        // Release
+        ip.ki.wVk = VK_NEXT;
+        ip.ki.dwFlags = KEYEVENTF_KEYUP;
+        SendInput(1, &ip, sizeof(INPUT));
+    }
+
 #endif
 }
 
